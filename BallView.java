@@ -1,31 +1,28 @@
-package com.example.andre.gyrogolf;
-
-import android.view.View;
-import android.view.MotionEvent;
-import android.graphics.*;
-import android.content.Context;
-/**
- * Created by andre on 5/25/16.
- */
 public class BallView extends View {
 
     private int xMin = 0;          // This view's bounds
     private int xMax;
     private int yMin = 0;
     private int yMax;
+  //  Bitmap mBitmap = Bitmap.createBitmap(Bitmap src, int distwidth, int distHeight, boolean filter);
+
     private float ballRadius = 80; // Ball's radius
     private float ballX = ballRadius + 20;  // Ball's center (x,y)
     private float ballY = ballRadius + 40;
     private float ballSpeedX = 5;  // Ball's speed (x,y)
     private float ballSpeedY = 3;
+    public float previousX;
+    public float previousY;
     private RectF ballBounds;      // Needed for Canvas.drawOval
-    private Paint paint;           // The paint (e.g. style, color) used for drawing
-
+    private Paint paint;
+    // The paint (e.g. style, color) used for drawing
     // Constructor
     public BallView(Context context) {
         super(context);
         ballBounds = new RectF();
         paint = new Paint();
+        this.setFocusableInTouchMode(true);
+
     }
 
     // Called back to draw the view. Also called by invalidate().
@@ -33,8 +30,11 @@ public class BallView extends View {
     protected void onDraw(Canvas canvas) {
         // Draw the ball
         ballBounds.set(ballX-ballRadius, ballY-ballRadius, ballX+ballRadius, ballY+ballRadius);
-        paint.setColor(Color.GREEN);
+        paint.setColor(Color.WHITE);
+        canvas.drawColor(0XFFAAAAAA);
         canvas.drawOval(ballBounds, paint);
+        
+      //  canvas.drawBitmap(mBitmap,0,0, mBitmapPaint);
 
         // Update the position of the ball, including collision detection and reaction.
         update();
@@ -76,7 +76,35 @@ public class BallView extends View {
         xMax = w-1;
         yMax = h-1;
     }
+
+
+    // Touch-input handler
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float currentX = event.getX();
+        float currentY = event.getY();
+        float deltaX, deltaY;
+        float scalingFactor = 10.0f / ((xMax > yMax) ? yMax : xMax);
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_MOVE:
+                // Modify rotational angles according to movement
+                deltaX = currentX - previousX;
+                deltaY = currentY - previousY;
+                ballSpeedX += deltaX * scalingFactor;
+                ballSpeedY += deltaY * scalingFactor;
+        }
+        // Save current x, y
+        previousX = currentX;
+        previousY = currentY;
+        return true;  // Event handled
+    }
+
 }
+
+
+
+
+
 
 
 
