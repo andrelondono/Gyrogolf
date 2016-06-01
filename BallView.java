@@ -33,9 +33,13 @@ public class BallView extends View{
     private float ballSpeedY = 3;
     public float previousX;
     public float previousY;
+    private float holeX;
+    private float holeY;
+    private float holeRadius = 100;
     private RectF ballBounds;      // Needed for Canvas.drawOval
     private Paint paint;
      private Paint paintb;
+    private RectF holeBounds;
     // The paint used for drawing
    // Resources res = getResources();
   //  SurfaceHolder s;
@@ -45,7 +49,9 @@ public class BallView extends View{
     public BallView(Context context) {
         super(context);
         ballBounds = new RectF();
+        holeBounds = new RectF();
         paint = new Paint();
+        paintb = new Paint();
       //  s = getHolder();
         // mBitmap = BitmapFactory.decodeResource(this.getResources(),R.drawable.greenb);
         this.setFocusableInTouchMode(true);
@@ -63,12 +69,18 @@ public class BallView extends View{
         //paintb.setColor(Color.GREEN);
         canvas.drawColor(Color.GREEN);
 
+        //draw the hole
+        holeBounds.set(holeX-holeRadius, holeY-holeRadius, holeX+holeRadius, holeY+holeRadius);
+        paintb.setColor(Color.BLACK);
+        canvas.drawOval(holeBounds, paintb);
+
         // Draw the ball
 
         ballBounds.set(ballX-ballRadius, ballY-ballRadius, ballX+ballRadius, ballY+ballRadius);
         paint.setColor(Color.WHITE);
 
         canvas.drawOval(ballBounds, paint);
+
 
 
 
@@ -103,6 +115,13 @@ public class BallView extends View{
             ballSpeedY = -ballSpeedY;
             ballY = yMin + ballRadius;
         }
+
+        if(Math.abs(ballX-holeX)<= 20 && Math.abs(ballY-holeY)<= 20){
+            System.out.println("match");
+
+        }
+
+
     }
 
     // Called back when the view is first created or its size changes.
@@ -111,6 +130,8 @@ public class BallView extends View{
         // Set the movement bounds for the ball
         xMax = w-1;
         yMax = h-1;
+        holeX = new Float(Math.random()* (xMax - 100));
+        holeY = new Float(Math.random()* (yMax - 100));
     }
 
 
@@ -147,12 +168,3 @@ public class BallView extends View{
         }
     }*/
 }
-
-
-
-
-
-
-
-
-
