@@ -70,4 +70,7 @@ public class Obstacle {
 		top = yCoord - (height / 2);
 		bottom = top + height;
 	}
+	public void draw(Canvas canvas, Paint paint) {
+		canvas.drawRect(leftVert, top, rightVert, bottom, paint);
+	}
 }
