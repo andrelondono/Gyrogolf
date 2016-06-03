@@ -39,6 +39,7 @@ public class BallView extends View{
     private RectF ballBounds;      // Needed for Canvas.drawOval
     private Paint paint;
     private Paint paintb;
+    private Paint painto;
     private RectF holeBounds;
     private List<Obstacle> obsList;
     // The paint used for drawing
@@ -53,6 +54,7 @@ public class BallView extends View{
         holeBounds = new RectF();
         paint = new Paint();
         paintb = new Paint();
+        painto = new Paint();
       //  s = getHolder();
         // mBitmap = BitmapFactory.decodeResource(this.getResources(),R.drawable.greenb);
         this.setFocusableInTouchMode(true);
@@ -82,7 +84,10 @@ public class BallView extends View{
 
         canvas.drawOval(ballBounds, paint);
 
-
+        //draw the obstacles
+        for(Obstacle o : obsList) {
+            o.draw(canvas, painto);
+        }
 
 
         // Update the position of the ball, including collision detection and reaction.
