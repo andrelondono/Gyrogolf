@@ -38,8 +38,9 @@ public class BallView extends View{
     private float holeRadius = 100;
     private RectF ballBounds;      // Needed for Canvas.drawOval
     private Paint paint;
-     private Paint paintb;
+    private Paint paintb;
     private RectF holeBounds;
+    private List<Obstacle> obsList;
     // The paint used for drawing
    // Resources res = getResources();
   //  SurfaceHolder s;
@@ -101,6 +102,12 @@ public class BallView extends View{
         ballX += ballSpeedX;
         ballY += ballSpeedY;
         // Detect collision and react
+        if (checkObsCollision(ballX, ballY, ballRadius) == 1) {
+            ballSpeedX = -ballSpeedX
+        }
+        else if(checkObsCollision(ballX, ballY, ballRadius) == 2) {
+            ballSpeedY = -ballSpeedY;
+        }
         if (ballX + ballRadius > xMax) {
             ballSpeedX = -ballSpeedX;
             ballX = xMax-ballRadius;
@@ -124,6 +131,15 @@ public class BallView extends View{
 
     }
 
+    private int checkObsCollision(float ballX, float ballY, float ballRadius) {
+        for(Obstacle o : obsList) {
+            if (o.contact(ballX, ballY, ballRadius) != 0) {
+                return o.contact(ballX, ballY, ballRadius;
+            }
+        }
+        return 0;
+    }
+
     // Called back when the view is first created or its size changes.
     @Override
     public void onSizeChanged(int w, int h, int oldW, int oldH) {
@@ -132,8 +148,27 @@ public class BallView extends View{
         yMax = h-1;
         holeX = new Float(Math.random()* (xMax - 100));
         holeY = new Float(Math.random()* (yMax - 100));
+        generateObstacles();
     }
 
+    private void generateObstacles() {
+        int longSide = (int)(xMax / 2);
+        int shortSide = longSide / 4;
+        int squareSide = longSide / 2;
+        for (int i = 0; i < 2; i++) {
+            if (Math.random() > .5) {
+                Obstacle o = new Obstacle(Math.random() * xMax, Math.random() * yMax, longSide, shortSide);
+                obsList.add(o);
+            }
+            if (Math.random() <= .5) {
+                Obstacle o = new Obstacle(Math.random() * xMax, Math.random() * yMax, shortSide, longSide);
+                obsList.add(o);
+            }               
+        }
+        if (Math.random() > .4) {
+            obsList.add(new Obstacle(Math.random() * xMax, Math.random() * yMax, squareSide, squareSide));            
+        }
+    }
 
     // Touch-input handler
     @Override
