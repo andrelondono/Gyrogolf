@@ -11,6 +11,7 @@ import android.graphics.*;
 import android.content.Context;
 import java.io.*;
 import android.content.res.Resources;
+import java.util.timer;
 /**
  * Created by andre on 5/25/16.
  */
@@ -42,6 +43,7 @@ public class BallView extends View{
     private Paint painto;
     private RectF holeBounds;
     private List<Obstacle> obsList;
+    private Timer time = new Timer();
     // The paint used for drawing
    // Resources res = getResources();
   //  SurfaceHolder s;
