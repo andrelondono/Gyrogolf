@@ -88,6 +88,11 @@ public class BallView extends View{
         for(Obstacle o : obsList) {
             o.draw(canvas, painto);
         }
+        
+        canvas.drawText("Scores: "+scores ,1000, 30, paintb );                                      
+        
+        
+        canvas.drawText("TimeLeft: "+time, 1000, 50, paintb);   
 
 
         // Update the position of the ball, including collision detection and reaction.
