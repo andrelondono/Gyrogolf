@@ -28,7 +28,7 @@ public class Obstacle {
 		else
 			return 0;
 	}
-	public boolean xBounce(float xCoord, float yCoord, float width, float height) {
+	public boolean xBounce(float xCoord, float yCoord, float rad) {
 		if (ballX + rad > leftVert && ballX + rad < rightVert){
 			if (ballY > top && ballY < bottom)
 				return true;
@@ -40,7 +40,7 @@ public class Obstacle {
 		else
 			return false;
 	}
-	public boolean yBounce(float xCoord, float yCoord, float width, float height) {
+	public boolean yBounce(float xCoord, float yCoord, float rad) {
 		if (ballY + rad > top && ballY + rad < bottom){
 			if (ballX > leftVert && ballX < rightVert)
 				return true;
