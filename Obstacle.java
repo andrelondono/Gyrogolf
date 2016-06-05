@@ -60,7 +60,7 @@ public class Obstacle {
 		return yCoord;
 	}
 
-	public change(float xCoord, float yCoord, float width, float height) {
+	public void change(float xCoord, float yCoord, float width, float height) {
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
 		this.width = width;
