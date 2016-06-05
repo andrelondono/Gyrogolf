@@ -135,6 +135,7 @@ public class BallView extends View{
 
         if(Math.abs(ballX-holeX)<= 20 && Math.abs(ballY-holeY)<= 20){
             System.out.println("match");
+            // this.onSizeChanged(xMax+1, yMax+1, 0, 0);
 
         }
 
@@ -144,7 +145,7 @@ public class BallView extends View{
     private int checkObsCollision(float ballX, float ballY, float ballRadius) {
         for(Obstacle o : obsList) {
             if (o.contact(ballX, ballY, ballRadius) != 0) {
-                return o.contact(ballX, ballY, ballRadius;
+                return o.contact(ballX, ballY, ballRadius);
             }
         }
         return 0;
