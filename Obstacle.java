@@ -14,9 +14,9 @@ public class Obstacle {
 		this.yCoord = yCoord;
 		this.width = width;
 		this.height = height;
-		leftVert = xCoord - (width / 2);
+		leftVert = yCoord - (width / 2);
 		rightVert = leftVert + width;
-		top = yCoord - (height / 2);
+		top = xCoord - (height / 2);
 		bottom = top + height;
 	}
 
