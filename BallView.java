@@ -170,11 +170,11 @@ public class BallView extends View{
         int squareSide = longSide / 2;
         for (int i = 0; i < 2; i++) {
             if (Math.random() > .5) {
-                Obstacle o = new Obstacle(Math.random() * xMax, Math.random() * yMax, longSide, shortSide);
+                Obstacle o = new Obstacle(new Float(Math.random() * xMax), new Float(Math.random() * yMax), new Float(longSide), new Float(shortSide));
                 obsList.add(o);
             }
             if (Math.random() <= .5) {
-                Obstacle o = new Obstacle(Math.random() * xMax, Math.random() * yMax, shortSide, longSide);
+                Obstacle o = new Obstacle(new Float(Math.random() * xMax), new Float(Math.random() * yMax), new Float(shortSide), new Float(longSide));
                 obsList.add(o);
             }               
         }
