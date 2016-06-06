@@ -28,30 +28,29 @@ public class Obstacle {
 		else
 			return 0;
 	}
-	public boolean xBounce(float xCoord, float yCoord, float rad) {
-		if (ballX + rad > leftVert && ballX + rad < rightVert){
-			if (ballY > top && ballY < bottom)
-				return true;
-		}
-		else if (ballX - rad > leftVert && ballX - rad < rightVert){
-			if (ballY > top && ballY < bottom)
-				return true;
-		}
-		else
-			return false;
-	}
-	public boolean yBounce(float xCoord, float yCoord, float rad) {
-		if (ballY + rad > top && ballY + rad < bottom){
-			if (ballX > leftVert && ballX < rightVert)
-				return true;
-		}
-		else if (ballY - rad > top && ballY - rad < bottom) {
-			if (ballX > leftVert && ballX < rightVert)
-				return true;
-		}
-		else
-			return false;
-	}
+	public boolean xBounce(float ballX, float ballY, float rad) {
+        if (ballX + rad > leftVert && ballX + rad < rightVert){
+            if (ballY > top && ballY < bottom)
+                return true;
+        }
+        else if (ballX - rad > leftVert && ballX - rad < rightVert){
+            if (ballY > top && ballY < bottom)
+                return true;
+        }
+            return false;
+    }
+    public boolean yBounce(float ballX, float ballY, float rad) {
+        if (ballY + rad > top && ballY + rad < bottom){
+            if (ballX > leftVert && ballX < rightVert)
+                return true;
+        }
+        else if (ballY - rad > top && ballY - rad < bottom) {
+            if (ballX > leftVert && ballX < rightVert)
+                return true;
+        }
+
+            return false;
+    }
 
 	public float getXCoord() {
 		return xCoord;
