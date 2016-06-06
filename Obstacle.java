@@ -60,7 +60,7 @@ public class Obstacle {
 		return yCoord;
 	}
 
-	public void change(float xCoord, float yCoord, float width, float height) {
+	/* public void change(float xCoord, float yCoord, float width, float height) {
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
 		this.width = width;
@@ -69,7 +69,7 @@ public class Obstacle {
 		rightVert = leftVert + width;
 		top = yCoord - (height / 2);
 		bottom = top + height;
-	}
+	} */
 	public void draw(Canvas canvas, Paint paint) {
 		canvas.drawRect(leftVert, top, rightVert, bottom, paint);
 	}
