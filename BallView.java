@@ -209,28 +209,28 @@ public class BallView extends View{
         generateObstacles();                                                                               
     }                                                                                                      
                                                                                                            
-    private void generateObstacles() {                                                                     
-            int longSide = (int)(xMax / 2);                                                                
-            int shortSide = longSide / 4;                                                                  
-            int squareSide = longSide / 2;                                                                 
-            for (int i = 0; i < 2; i++) {                                                                  
-                if (Math.random() > .5) {                                                                  
-                    Obstacle o = new Obstacle((float) (new Float(Math.random() * xMax)), (float) (new Float
-                    obsList.add(o);                                                                        
-                }                                                                                          
-                if (Math.random() <= .5) {                                                                 
-                    Obstacle o = new Obstacle( (float) (new Float(Math.random() * xMax)),(float) (new Float
-                    obsList.add(o);                                                                        
-                }                                                                                          
-            }                                                                                              
-            if (Math.random() > .4) {                                                                      
-           //     obsList.add(new Obstacle(Math.random() * xMax, Math.random() * yMax, squareSide, squareSi
-              obsList.add( new Obstacle( (float) (new Float(Math.random() * xMax)),(float) (new Float(Math.
-            }                                                                                              
-        }                                                                                                  
+    private void generateObstacles() {                                                                                                                                                                
+         int longSide = (int)(xMax / 2);                                                                                                                                                           
+         int shortSide = longSide / 4;                                                                                                                                                             
+         int squareSide = longSide / 2;                                                                                                                                                            
+         for (int i = 0; i < 2; i++) {                                                                                                                                                             
+             if (Math.random() > .5) {                                                                                                                                                             
+                 Obstacle o = new Obstacle((float) (new Float(Math.random() * xMax)), (float) (new Float(Math.random() * yMax)),(float)( new Float(longSide)), (float) (new Float(shortSide)));    
+                 obsList.add(o);                                                                                                                                                                   
+             }                                                                                                                                                                                     
+             if (Math.random() <= .5) {                                                                                                                                                            
+                 Obstacle o = new Obstacle( (float) (new Float(Math.random() * xMax)),(float) (new Float(Math.random() * yMax)), (float) (new Float(shortSide)), (float)( new Float(longSide)));   
+                 obsList.add(o);                                                                                                                                                                   
+             }                                                                                                                                                                                     
+         }                                                                                                                                                                                         
+         if (Math.random() > .4) {                                                                                                                                                                 
+        //     obsList.add(new Obstacle(Math.random() * xMax, Math.random() * yMax, squareSide, squareSide));                                                                                      
+           obsList.add( new Obstacle( (float) (new Float(Math.random() * xMax)),(float) (new Float(Math.random() * yMax)), (float) (new Float(squareSide)), (float)( new Float(squareSide))));     
+         }                                                                                                                                                                                         
+     }                                                                                                                                                                                             
                                                                                                            
                                                                                                            
-                                                                                                           
+                                                                                                         
     // Touch-input handler                                                                                 
     @Override                                                                                              
     public boolean onTouchEvent(MotionEvent event) {                                                       
