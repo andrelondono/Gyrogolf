@@ -216,13 +216,13 @@ public class BallView extends View{
          for (int i = 0; i < 2; i++) {                                                                                                                                                             
              if (Math.random() > .5) {                                                                                                                                                             
                  Obstacle o = new Obstacle((float) (new Float(Math.random() * xMax)), (float) (new Float(Math.random() * yMax)),(float)( new Float(longSide)), (float) (new Float(shortSide)));    
-                 if(o.contact(ballX, ballY, ballRadius) != 0 && o.contact(holeX, holeY, holeRadius))
+                 if(o.contact(ballX, ballY, ballRadius) != 0 && o.contact(holeX, holeY, holeRadius) != 0)
                     continue;
                  obsList.add(o);                                                                                                                                                                   
              }                                                                                                                                                                                     
              if (Math.random() <= .5) {                                                                                                                                                            
                  Obstacle o = new Obstacle( (float) (new Float(Math.random() * xMax)),(float) (new Float(Math.random() * yMax)), (float) (new Float(shortSide)), (float)( new Float(longSide)));   
-                 if(o.contact(ballX, ballY, ballRadius) != 0 && o.contact(holeX, holeY, holeRadius))
+                 if(o.contact(ballX, ballY, ballRadius) != 0 && o.contact(holeX, holeY, holeRadius) != 0)
                     continue;
                  obsList.add(o);                                                                                                                                                                   
              }                                                                                                                                                                                     
@@ -230,8 +230,8 @@ public class BallView extends View{
          if (Math.random() > .4) {                                                                                                                                                                 
         //     obsList.add(new Obstacle(Math.random() * xMax, Math.random() * yMax, squareSide, squareSide));                                                                                      
            Obstacle a = new Obstacle( (float) (new Float(Math.random() * xMax)),(float) (new Float(Math.random() * yMax)), (float) (new Float(squareSide)), (float)( new Float(squareSide)));     
-           if(o.contact(ballX, ballY, ballRadius) != 0 && o.contact(holeX, holeY, holeRadius))
-              continue;
+           if(a.contact(ballX, ballY, ballRadius) != 0 && a.contact(holeX, holeY, holeRadius) != 0)
+              return;
            obsList.add(a);
            
          }                                                                                                                                                                                         
