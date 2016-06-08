@@ -144,9 +144,22 @@ public class BallView extends View{
     private void update() {                                                                                
         // Get new (x,y) position                                                                          
         ballX += ballSpeedX;
-        ballSpeedX += FRICTION;
+        if(Math.abs(ballSpeedX) > FRICTION) {
+          if(ballSpeedX > 0)
+            ballSpeedX += FRICTION;
+          else
+            ballSpeedX -= FRICTION;
+        } else
+          ballSpeedX = 0;
         ballY += ballSpeedY;  
-        ballSpeedY += FRICTION;
+        if(Math.abs(ballSpeedY) > FRICTION) {
+          if(ballSpeedY > 0)
+            ballSpeedY += FRICTION;
+          else
+            ballSpeedY -= FRICTION;
+        } else
+          ballSpeedY = 0;
+
         // Detect collision and react                                                                      
        // this.checkObsCollision(ballX, ballY, ballRadius);                                                
            if (checkObsCollision(ballX, ballY, ballRadius) == 1) {                                         
