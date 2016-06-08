@@ -39,7 +39,8 @@ public class BallView extends View{
     private int yMin = 0;                                                                                  
     private int yMax;                                                                                      
     //boolean canDraw = false;                                                                             
-    public int scores;                                                                                     
+    private int scores;
+    private final float FRICTION = (float) (new Float(-5));
                                                                                                            
    // Bitmap mBitmap; //BitmapFactory.decodeFile("/Users/andre/AndroidStudioProjects/Gyrogolf/app/src/main/
     //File f = new File("/data/data/com.example.andre.gyrogolf/res/drawable/green.jpg");                   
@@ -142,8 +143,10 @@ public class BallView extends View{
     // Detect collision and update the position of the ball.                                               
     private void update() {                                                                                
         // Get new (x,y) position                                                                          
-        ballX += ballSpeedX;                                                                               
-        ballY += ballSpeedY;                                                                               
+        ballX += ballSpeedX;
+        ballSpeedX += FRICTION;
+        ballY += ballSpeedY;  
+        ballSpeedY += FRICTION;
         // Detect collision and react                                                                      
        // this.checkObsCollision(ballX, ballY, ballRadius);                                                
            if (checkObsCollision(ballX, ballY, ballRadius) == 1) {                                         
