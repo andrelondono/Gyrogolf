@@ -146,17 +146,17 @@ public class BallView extends View{
         ballX += ballSpeedX;
         if(Math.abs(ballSpeedX) > FRICTION) {
           if(ballSpeedX > 0)
-            ballSpeedX += FRICTION;
-          else
             ballSpeedX -= FRICTION;
+          else
+            ballSpeedX += FRICTION;
         } else
           ballSpeedX = 0;
         ballY += ballSpeedY;  
         if(Math.abs(ballSpeedY) > FRICTION) {
           if(ballSpeedY > 0)
-            ballSpeedY += FRICTION;
-          else
             ballSpeedY -= FRICTION;
+          else
+            ballSpeedY += FRICTION;
         } else
           ballSpeedY = 0;
 
