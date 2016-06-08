@@ -40,7 +40,7 @@ public class BallView extends View{
     private int yMax;                                                                                      
     //boolean canDraw = false;                                                                             
     private int scores;
-    private final float FRICTION = (float) (new Float(-5));
+    private final float FRICTION = (float) (new Float(-.5));
                                                                                                            
    // Bitmap mBitmap; //BitmapFactory.decodeFile("/Users/andre/AndroidStudioProjects/Gyrogolf/app/src/main/
     //File f = new File("/data/data/com.example.andre.gyrogolf/res/drawable/green.jpg");                   
@@ -146,17 +146,17 @@ public class BallView extends View{
         ballX += ballSpeedX;
         if(Math.abs(ballSpeedX) > FRICTION) {
           if(ballSpeedX > 0)
-            ballSpeedX -= FRICTION;
-          else
             ballSpeedX += FRICTION;
+          else
+            ballSpeedX -= FRICTION;
         } else
           ballSpeedX = 0;
         ballY += ballSpeedY;  
         if(Math.abs(ballSpeedY) > FRICTION) {
           if(ballSpeedY > 0)
-            ballSpeedY -= FRICTION;
-          else
             ballSpeedY += FRICTION;
+          else
+            ballSpeedY -= FRICTION;
         } else
           ballSpeedY = 0;
 
