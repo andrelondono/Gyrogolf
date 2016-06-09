@@ -20,6 +20,7 @@ public class Obstacle {
     private float rightVert;
     private float top;
     private float bottom;
+    private int whichSide;
 
     public Obstacle(float xCoord, float yCoord, float width, float height) {
         this.xCoord = xCoord;
@@ -30,15 +31,18 @@ public class Obstacle {
         rightVert = leftVert + width;
         top = yCoord - (height / 2);
         bottom = top + height;
+        whichSide = 0;  
     }
 
-    public int contact(float ballX, float ballY, float rad) {
-        if (xBounce(ballX, ballY, rad))
-            return 1;
-        else if(yBounce(ballX, ballY, rad))
-            return 2;
+    public boolean contact(float ballX, float ballY, float rad) {
+        if (xBounce(ballX, ballY, rad)) {
+            return true;
+        }
+        else if(yBounce(ballX, ballY, rad)) {
+            return true;
+        }
         else
-            return 0;
+            return false;
 
     }
 
@@ -46,13 +50,13 @@ public class Obstacle {
     public boolean xBounce(float ballX, float ballY, float rad) {
         if (ballX + rad > leftVert && ballX + rad < rightVert){
             if (ballY > top && ballY < bottom) {
-                System.out.println("&&&&&&&&&&& SOMETHING IS HAPPENING &&&&&&&&&&");
+                whichSide = 1;
                 return true;
             }
         }
         else if (ballX - rad > leftVert && ballX - rad < rightVert){
             if (ballY > top && ballY < bottom) {
-                System.out.println("&&&&&&&&&&& SOMETHING IS HAPPENING &&&&&&&&&&");
+                whichSide = 2;
                 return true;
             }
         }
@@ -61,19 +65,35 @@ public class Obstacle {
     public boolean yBounce(float ballX, float ballY, float rad) {
         if (ballY + rad > top && ballY + rad < bottom){
             if (ballX > leftVert && ballX < rightVert) {
-                System.out.println("&&&&&&&&&&& SOMETHING IS HAPPENING &&&&&&&&&&");
+                whichSide = 3;
                 return true;
             }
         }
         else if (ballY - rad > top && ballY - rad < bottom) {
             if (ballX > leftVert && ballX < rightVert) {
-                System.out.println("&&&&&&&&&&& SOMETHING IS HAPPENING &&&&&&&&&&");
+                whichSide = 4;
                 return true;
             }
         }
 
-            return false;
+        return false;
     }
+    public int getWhichSide() {
+        return getWhichSide;
+    }
+    public float getLeftVert() {
+        return leftVert;
+    }
+    public float getRightVert() {
+        return rightVert;
+    }
+    public float getTop() {
+        return top;
+    }
+    public float getBottom() {
+        return bottom;
+    }
+}
 
 
 
