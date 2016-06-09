@@ -79,7 +79,7 @@ public class Obstacle {
         return false;
     }
     public int getWhichSide() {
-        return getWhichSide;
+        return whichSide;
     }
     public float getLeftVert() {
         return leftVert;
