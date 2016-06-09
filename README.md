@@ -1,2 +1,2 @@
-# Gyrogolf
+# Golf
 Project for APCS 
