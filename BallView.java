@@ -194,11 +194,24 @@ public class BallView extends View {
                                                                                                                                                                                                                                        
         // Detect collision and react                                                                                                                                                                                                  
         // this.checkObsCollision(ballX, ballY, ballRadius);                                                                                                                                                                           
-        if (checkObsCollision(ballX, ballY, ballRadius) == 1) {                                                                                                                                                                        
-            ballSpeedX = -ballSpeedX;                                                                                                                                                                                                  
-        } else if (checkObsCollision(ballX, ballY, ballRadius) == 2) {                                                                                                                                                                 
-            ballSpeedY = -ballSpeedY;                                                                                                                                                                                                  
-        }                                                                                                                                                                                                                              
+        Obstacle o = checkObsCollision(ballX, ballY, ballRadius);                                                                                                                                                                          
+        if ( o != null) {                                                                                                                                                                        
+            switch (o.getWhichSide()) {
+                case 1: ballSpeedX = -ballSpeedX;
+                        ballX = o.getLeftVert() - ballRadius;
+                        break;
+                case 2: ballSpeedX = -ballSpeedX;
+                        ballX = o.getRightVert() + ballRadius;
+                        break;
+                case 3: ballSpeedY = -ballSpeedY;
+                        ballY = o.getTop() - ballRadius;
+                        break;
+                case 4: ballSpeedY = -ballSpeedY;
+                        ballY = o.getBottom() + ballRadius;
+                        break;
+            }                                                                                                                                                                                                  
+        }
+        o = null;
                                                                                                                                                                                                                                        
                                                                                                                                                                                                                                        
         if (ballX + ballRadius > xMax) {                                                                                                                                                                                               
