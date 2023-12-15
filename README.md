@@ -1,2 +1,2 @@
 # Golf
-Android project for simple tap golf game
+Android project for gyroscope enabled golf game
